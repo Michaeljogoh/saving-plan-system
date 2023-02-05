@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { JwtGuard } from 'src/auth/jwt/jwt.guard';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UsersService } from './users.service';
 
@@ -6,13 +7,15 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @UseGuards(JwtGuard)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
+  @UseGuards(JwtGuard)
   @Delete(':id')
-  delete(@Param(':id') id: string) {
+  delete(@Param(':id') id: number) {
     return this.usersService.delete(+id);
   }
 }

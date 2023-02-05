@@ -5,9 +5,12 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
+import { Saving } from './saving-plan/saving-plan.entity';
+import { Invite} from './invite/invite.entity';
 import { AuthModule } from './auth/auth.module';
 import { SavingPlanModule } from './saving-plan/saving-plan.module';
-const entities = [User];
+import { InviteModule } from './invite/invite.module';
+
 
 @Module({
   imports: [
@@ -21,12 +24,13 @@ const entities = [User];
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: entities,
+      entities: [User , Saving , Invite],
       synchronize: true,
     }),
     UsersModule,
     AuthModule,
     SavingPlanModule,
+    InviteModule,
   ],
 })
 export class AppModule {}
