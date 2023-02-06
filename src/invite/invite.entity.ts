@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne,  PrimaryGeneratedColumn } from 'typeorm';
 import { Saving } from 'src/saving-plan/saving-plan.entity';
 
 @Entity()
@@ -7,8 +7,8 @@ export class Invite {
   id: number;
 
   @Column()
-  name: number;
+  name: string;
 
-  @ManyToOne(() => Saving, (saving) => saving.id)
-  saving: Saving;
+  @ManyToOne(() => Saving, (saving) => saving.invite)
+  saving: Saving ;
 }

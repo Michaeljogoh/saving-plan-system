@@ -7,7 +7,6 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
 import { Saving } from './saving-plan/saving-plan.entity';
 import { Invite} from './invite/invite.entity';
-import { SavingInvite } from './invite/saving-invite.entity';
 import { AuthModule } from './auth/auth.module';
 import { SavingPlanModule } from './saving-plan/saving-plan.module';
 import { InviteModule } from './invite/invite.module';
@@ -25,7 +24,7 @@ import { InviteModule } from './invite/invite.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User , Saving , Invite , SavingInvite],
+      entities: [User , Saving , Invite],
       synchronize: true,
     }),
     UsersModule,

@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports:[TypeOrmModule.forFeature([Saving])],
   controllers: [SavingPlanController],
-  providers: [SavingPlanService]
+  providers: [SavingPlanService],
+  exports:[SavingPlanService]
 })
 export class SavingPlanModule {}
